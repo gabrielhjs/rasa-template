@@ -1,0 +1,21 @@
+services:
+  rasa:
+    container_name: rasa
+    build:
+      context: ./
+      dockerfile: docker/Rasa.Dockerfile
+    environment:
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+      - BUCKET_NAME=${BUCKET_NAME}
+    ports:
+      - "5005:5005"
+
+  rasa-sdk:
+    container_name: rasa-sdk
+    build:
+      context: ./
+      dockerfile: docker/RasaSdk.Dockerfile
+    ports:
+      - "5055:5055"
