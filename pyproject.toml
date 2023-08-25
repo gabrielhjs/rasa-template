@@ -1,0 +1,72 @@
+[tool.poetry]
+name = "python-project-template"
+version = "1.1.0"
+description = "Template for python projects"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+train = "src.scripts.train:train"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+rasa = "^3.6.6"
+boto3 = "^1.28.34"
+sanic = ">=21.12,<21.13"
+
+[tool.poetry.group.dev.dependencies]
+black = ">=22.0"
+flake8 = "^6.1.0"
+bandit = "^1.7.5"
+pytest = "^7.4.0"
+poethepoet = "^0.22.0"
+pytest-cov = "^4.1.0"
+isort = "^5.12.0"
+python-semantic-release = "^8.0.7"
+commitizen = "^3.6.0"
+pre-commit = "^3.3.3"
+mypy = "^1.5.1"
+boto3-stubs = { extras = ["s3"], version = "^1.28.34" }
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.bandit]
+targets = ["src"]
+
+[tool.poe.tasks]
+test = "pytest --cov src"
+lint = ["lint:fix", "lint:check"]
+"lint:check" = ["lint:check:flake8", "lint:check:isort"]
+"lint:check:isort" = "isort -c src tests"
+"lint:check:flake8" = "flake8 src tests"
+"lint:fix" = ["lint:fix:isort", "lint:fix:black"]
+"lint:fix:isort" = "isort src tests"
+"lint:fix:black" = "black src tests"
+sec = ["sec:check"]
+"sec:check" = "bandit -c pyproject.toml -r ."
+clean = "rm -rf ./**/*.pyc ./**/__pycache__ ./.pytest_cache ./.coverage ./.mypy_cache"
+"release:print" = "semantic-release --noop version --print"
+commit = "cz commit"
+train = ["train:rasa", "train:upload"]
+"train:rasa" = "rasa train --fixed-model-name model"
+"train:upload" = "python src/scripts/upload_model.py"
+"run:rasa" = "rasa run"
+"run:rasa:aws" = "rasa run --model model.tar.gz --remote-storage aws"
+"run:rasa_sdk" = "rasa run actions --actions src.actions"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = ["tests", "src"]
+
+[tool.isort]
+profile = "black"
+src_paths = ["tests", "src"]
+
+[tool.semantic_release]
+version_toml = ["pyproject.toml:tool.poetry.version"]
+
+[tool.semantic_release.branches.develop]
+match = "develop"
