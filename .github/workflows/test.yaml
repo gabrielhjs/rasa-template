@@ -1,0 +1,17 @@
+jobs:
+  training-testing:
+    name: Training and Testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Rasa Train and Test GitHub Action
+        uses: RasaHQ/rasa-train-test-gha@main
+        with:
+          requirements_file: requirements.txt
+          data_validate: true
+          rasa_train: false
+          cross_validation: true
+          rasa_test: true
+          test_type: all
+          publish_summary: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}

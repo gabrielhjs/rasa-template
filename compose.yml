@@ -1,5 +1,7 @@
 services:
   rasa:
+    profiles:
+      - rasa
     container_name: rasa
     build:
       context: ./
@@ -9,13 +11,119 @@ services:
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
       - BUCKET_NAME=${BUCKET_NAME}
+      - ACTION_ENDPOINT=http://sdk:5055/webhook
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+      - REDIS_PASSWORD=redis
+      - POSTGRES_URL=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres
+      - RABBITMQ_URL=rabbitmq
+      - RABBITMQ_USERNAME=guest
+      - RABBITMQ_PASSWORD=guest
+      - RABBITMQ_QUEUE=rasa
+      - ROCKETCHAT_USER=assistent-chat
+      - ROCKETCHAT_PASSWORD=assistent-chat
+      - ROCKETCHAT_HOST=http://rocketchat:3000
     ports:
-      - "5005:5005"
+      - 5005:5005
+    depends_on:
+      - sdk
+      - postgres
+      - redis
+      - rabbitmq
+      - duckling
 
-  rasa-sdk:
-    container_name: rasa-sdk
+  sdk:
+    profiles:
+      - rasa
+    container_name: sdk
     build:
       context: ./
-      dockerfile: docker/RasaSdk.Dockerfile
+      dockerfile: docker/Sdk.Dockerfile
     ports:
-      - "5055:5055"
+      - "5055"
+
+  redis:
+    profiles:
+      - rasa
+    container_name: redis
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - "6379"
+    command: redis-server --save 20 1 --loglevel warning --requirepass redis
+
+  postgres:
+    profiles:
+      - rasa
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:4532
+
+  rabbitmq:
+    profiles:
+      - rasa
+    container_name: rabbitmq
+    image: rabbitmq:3-management-alpine
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER = admin
+      - RABBITMQ_DEFAULT_PASS = passw123
+
+  duckling:
+    profiles:
+      - rasa
+    container_name: duckling
+    image: rasa/duckling:0.2.0.2
+    ports:
+      - 8000:8000
+
+  rocketchat:
+    profiles:
+      - rocketchat
+    image: registry.rocket.chat/rocketchat/rocket.chat:${RELEASE:-latest}
+    restart: always
+    labels:
+      traefik.enable: "false"
+      traefik.http.routers.rocketchat.rule: Host(`${DOMAIN:-}`)
+      traefik.http.routers.rocketchat.tls: "true"
+      traefik.http.routers.rocketchat.entrypoints: https
+      traefik.http.routers.rocketchat.tls.certresolver: le
+    environment:
+      MONGO_URL: "${MONGO_URL:-mongodb://${MONGODB_ADVERTISED_HOSTNAME:-mongodb}:${MONGODB_INITIAL_PRIMARY_PORT_NUMBER:-27017}/${MONGODB_DATABASE:-rocketchat}?replicaSet=${MONGODB_REPLICA_SET_NAME:-rs0}}"
+      MONGO_OPLOG_URL: "${MONGO_OPLOG_URL:-mongodb://${MONGODB_ADVERTISED_HOSTNAME:-mongodb}:${MONGODB_INITIAL_PRIMARY_PORT_NUMBER:-27017}/local?replicaSet=${MONGODB_REPLICA_SET_NAME:-rs0}}"
+      ROOT_URL: ${ROOT_URL:-http://localhost:${HOST_PORT:-3000}}
+      PORT: ${PORT:-3000}
+      DEPLOY_METHOD: docker
+      DEPLOY_PLATFORM: ${DEPLOY_PLATFORM:-}
+      REG_TOKEN: ${REG_TOKEN:-}
+    depends_on:
+      - mongodb
+    expose:
+      - ${PORT:-3000}
+    ports:
+      - "${BIND_IP:-0.0.0.0}:${HOST_PORT:-3000}:${PORT:-3000}"
+
+  mongodb:
+    profiles:
+      - rocketchat
+    image: docker.io/bitnami/mongodb:${MONGODB_VERSION:-5.0}
+    restart: always
+    environment:
+      MONGODB_REPLICA_SET_MODE: primary
+      MONGODB_REPLICA_SET_NAME: ${MONGODB_REPLICA_SET_NAME:-rs0}
+      MONGODB_PORT_NUMBER: ${MONGODB_PORT_NUMBER:-27017}
+      MONGODB_INITIAL_PRIMARY_HOST: ${MONGODB_INITIAL_PRIMARY_HOST:-mongodb}
+      MONGODB_INITIAL_PRIMARY_PORT_NUMBER: ${MONGODB_INITIAL_PRIMARY_PORT_NUMBER:-27017}
+      MONGODB_ADVERTISED_HOSTNAME: ${MONGODB_ADVERTISED_HOSTNAME:-mongodb}
+      MONGODB_ENABLE_JOURNAL: ${MONGODB_ENABLE_JOURNAL:-true}
+      ALLOW_EMPTY_PASSWORD: ${ALLOW_EMPTY_PASSWORD:-yes}

@@ -1,13 +1,18 @@
 version: "3.1"
 
 rules:
-
-- rule: Say goodbye anytime the user says goodbye
+- rule: ativar form possui sepse
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - intent: paciente_possui_sepse
+  - action: sepse_form
+  - active_loop: sepse_form
 
-- rule: Say 'I am a bot' anytime the user challenges
+- rule: completar form possui sepse
+  condition:
+  - active_loop: sepse_form
   steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - action: sepse_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_completa_sepse_form

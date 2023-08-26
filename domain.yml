@@ -1,33 +1,41 @@
 version: "3.1"
 
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+- diagnostico_pneumonia
+- informa
+- paciente_possui_sepse
+
+entities:
+- number
+
+slots:
+  slot_frequencia_respiratoria:
+    type: any
+    mappings:
+    - entity: number
+      type: from_entity
+      conditions:
+      - active_loop: sepse_form
+        requested_slot: slot_frequencia_respiratoria
+    - intent: informa
+      type: from_text
+      conditions:
+      - active_loop: sepse_form
+        requested_slot: slot_frequencia_respiratoria
+
+forms:
+  sepse_form:
+    ignored_intents: []
+    required_slots:
+      - slot_frequencia_respiratoria
 
 responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  utter_diagnostico_pneumonia:
+  - text: "diagnostico de pneumonia"
+  utter_ask_slot_frequencia_respiratoria:
+  - text: "Qual é a frequência respiratória?"
+  utter_completa_sepse_form:
+  - text: "tem sepse, freq ({slot_frequencia_respiratoria})"
 
 session_config:
   session_expiration_time: 60
