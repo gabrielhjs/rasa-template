@@ -27,6 +27,7 @@ services:
       - ROCKETCHAT_USER=assistent-chat
       - ROCKETCHAT_PASSWORD=assistent-chat
       - ROCKETCHAT_HOST=http://rocketchat:3000
+      - DUCKLING_URL=http://duckling:8000
     ports:
       - 5005:5005
     depends_on:
@@ -85,7 +86,7 @@ services:
     container_name: duckling
     image: rasa/duckling:0.2.0.2
     ports:
-      - 8000:8000
+      - "8000"
 
   rocketchat:
     profiles:

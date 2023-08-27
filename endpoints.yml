@@ -8,7 +8,7 @@ lock_store:
   db: ${REDIS_DB}
   password: ${REDIS_PASSWORD}
   use_ssl: false
-  key_prefix: rasa-
+  key_prefix: rasa
 
 tracker_store:
   type: SQL

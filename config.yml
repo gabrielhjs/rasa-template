@@ -1,27 +1,27 @@
 recipe: default.v1
 language: pt
+assistant_id: 20230826-081452-binding-buffalo
 
 pipeline:
 - name: SpacyNLP
   model: pt_core_news_md
-- name: WhitespaceTokenizer
+- name: SpacyTokenizer
+- name: SpacyFeaturizer
+  pooling: mean
 - name: RegexFeaturizer
 - name: LexicalSyntacticFeaturizer
-- name: CountVectorsFeaturizer
 - name: CountVectorsFeaturizer
   analyzer: char_wb
   min_ngram: 1
   max_ngram: 4
-- name: DIETClassifier
-  epochs: 100
-  constrain_similarities: true
 - name: DucklingEntityExtractor
-  url: http://localhost:8000
+  url: http://duckling:8000
   dimensions:
-  - email
   - number
-  - amount-of-money
 - name: EntitySynonymMapper
+- name: DIETClassifier
+  epochs: 300
+  constrain_similarities: true
 - name: ResponseSelector
   epochs: 100
   constrain_similarities: true
@@ -39,4 +39,3 @@ policies:
   max_history: 5
   epochs: 100
   constrain_similarities: true
-assistant_id: 20230826-081452-binding-buffalo

@@ -6,10 +6,55 @@ stories:
     intent: paciente_possui_sepse
   - action: sepse_form
   - active_loop: sepse_form
-  - user: |
-      [30](number)
-    intent: informa
-  - slot_was_set:
-    - slot_frequencia_respiratoria: '30'
   - active_loop: null
   - action: utter_completa_sepse_form
+
+- story: texto completo de sepse
+  steps:
+  - user: |
+      paciente com [frequência respiratória de 30 respirações/min](entity_frequencia_respiratoria), com [confusão mental](entity_nivel_de_consciencia) e [pressão arterial de 90 mmHg](entity_pressao_arterial) tem sepse?
+    intent: paciente_possui_sepse
+  - action: sepse_form
+  - active_loop: sepse_form
+  - active_loop: null
+  - action: utter_completa_sepse_form
+
+# - story: pega casa
+#   steps:
+#   - user: |
+#       Eu tenho [7 casas](n_casas)
+#     intent: isso_e_numero
+#   - slot_was_set:
+#     - slot_n_casa: '7'
+#   - action: utter_isso_e_numero
+
+# - story: pega carro
+#   steps:
+#   - user: |
+#       Eu tenho [7 carros](n_carros)
+#     intent: isso_e_numero
+#   - slot_was_set:
+#     - slot_n_carro: '7'
+#   - action: utter_isso_e_numero
+
+# - story: pega carro e casa
+#   steps:
+#   - user: |
+#       Eu tenho [7 carros](n_carros) e [7 casas](n_casas)
+#     intent: isso_e_numero
+#   - slot_was_set:
+#     - slot_n_carro: '7'
+#   - slot_was_set:
+#     - slot_n_casa: '7'
+#   - action: utter_isso_e_numero
+
+# - story: pega casa e carro
+#   steps:
+#   - user: |
+#       Eu tenho [15 casas](n_casas) e [50 carros](n_carros)
+#     intent: isso_e_numero
+#   - slot_was_set:
+#     - slot_n_carro: 50.0
+#   - slot_was_set:
+#     - slot_n_casa: 15.0
+#   - action: utter_isso_e_numero
