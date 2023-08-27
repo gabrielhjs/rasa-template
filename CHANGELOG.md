@@ -2,6 +2,17 @@
 
 
 
+## v2.0.0-rc.2 (2023-08-27)
+
+### Feature
+
+* feat: added some train ([`b18aa58`](https://github.com/gabrielhjs/rasa-template/commit/b18aa58502d27a0f22bc724778f9c9aa858ecc9d))
+
+### Unknown
+
+* Merge branch &#39;feature/train-data&#39; into develop ([`6c240ad`](https://github.com/gabrielhjs/rasa-template/commit/6c240adb995ebda1a128b8c926b96fb1da805254))
+
+
 ## v2.0.0-rc.1 (2023-08-26)
 
 ### Breaking
