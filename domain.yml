@@ -2,40 +2,101 @@ version: "3.1"
 
 intents:
 - diagnostico_pneumonia
-- informa
+- informa:
+    use_entities: []
 - paciente_possui_sepse
+# - isso_e_numero
 
 entities:
+# - n_casas
+# - n_carros
 - number
+- entity_frequencia_respiratoria
+- entity_nivel_de_consciencia
+- entity_pressao_arterial
+
+actions:
+- action_extract_slot_frequencia_respiratoria
+- action_extract_slot_pressao_arterial
 
 slots:
   slot_frequencia_respiratoria:
-    type: any
+    type: float
+    influence_conversation: false
     mappings:
-    - entity: number
-      type: from_entity
+    - type: custom
+      action: action_extract_slot_frequencia_respiratoria
+    - type: from_entity
+      entity: number
       conditions:
       - active_loop: sepse_form
         requested_slot: slot_frequencia_respiratoria
-    - intent: informa
-      type: from_text
+  slot_nivel_de_consciencia:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_nivel_de_consciencia
+    - type: from_entity
+      entity: number
       conditions:
       - active_loop: sepse_form
-        requested_slot: slot_frequencia_respiratoria
+        requested_slot: slot_nivel_de_consciencia
+  slot_pressao_arterial:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+      action: action_extract_slot_pressao_arterial
+    - type: from_entity
+      entity: number
+      conditions:
+      - active_loop: sepse_form
+        requested_slot: slot_pressao_arterial
+    # - intent: informa
+    #   type: from_text
+    #   conditions:
+    #   - active_loop: sepse_form
+    #     requested_slot: slot_frequencia_respiratoria
+  # slot_n_casa:
+  #   type: float
+  #   influence_conversation: false
+  #   mappings:
+  #   - type: from_entity
+  #     entity: n_casas
+  # slot_n_carro:
+  #   type: float
+  #   influence_conversation: false
+  #   mappings:
+  #   - type: from_entity
+  #     entity: n_carros
 
 forms:
   sepse_form:
     ignored_intents: []
     required_slots:
       - slot_frequencia_respiratoria
+      - slot_nivel_de_consciencia
+      - slot_pressao_arterial
 
 responses:
   utter_diagnostico_pneumonia:
   - text: "diagnostico de pneumonia"
   utter_ask_slot_frequencia_respiratoria:
   - text: "Qual é a frequência respiratória?"
+  utter_ask_slot_nivel_de_consciencia:
+  - text: "Qual é o nível de consciência?"
+    buttons:
+    - title: "Alerta"
+      payload: "Alerta"
+    - title: "Confusão mental"
+      payload: "Confusão mental"
+  utter_ask_slot_pressao_arterial:
+  - text: "Qual é a pressão arterial?"
   utter_completa_sepse_form:
   - text: "tem sepse, freq ({slot_frequencia_respiratoria})"
+  utter_isso_e_numero:
+  - text: "número: ({slot_numero})"
 
 session_config:
   session_expiration_time: 60

@@ -44,6 +44,7 @@ setup = ["install:pre-commit", "install:spacy"]
 "install:pre-commit" = "pre-commit install"
 "install:spacy" = "python -m spacy download pt_core_news_md"
 test = "pytest --cov src"
+"test:rasa" = "rasa test"
 lint = ["lint:fix", "lint:check"]
 "lint:check" = ["lint:check:flake8", "lint:check:isort"]
 "lint:check:isort" = "isort -c src tests"
