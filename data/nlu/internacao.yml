@@ -1,0 +1,71 @@
+version: "3.1"
+
+nlu:
+- intent: internacao_quando
+  examples: |
+    - Como saber se precisa internar o paciente?
+    - Devo internar essa paciente?
+    - Essa paciente deve ir para uti ou enfermaria?
+    - Como alocar a paciente?
+
+- intent: internacao
+  examples: |
+    - Precisa internar?
+
+- intent: internacao_uti_quando
+  examples: |
+    - É caso para UTI?
+
+- intent: internacao_alta_criterio
+  examples: |
+    - Quais são os critérios de alta?
+    - Quais critérios indicam alta médica?
+    - Quais condições permitem a alta?
+    - Que fatores determinam a alta?
+    - Critérios de liberação do paciente?
+    - Quando posso dar alta ao paciente?
+    - Quais são os critérios para a liberação?
+    - Quais condições permitem a alta hospitalar?
+    - Que parâmetros definem a alta clínica?
+    - Critérios de alta em casos como este?
+    - Quando o paciente pode ser liberado?
+    - Que requisitos para dar alta você considera?
+    - Quais indicadores para conceder alta?
+    - Quais são os critérios para a alta do doente?
+    - Quando o paciente atende aos critérios de alta?
+    - Que elementos determinam a alta hospitalar?
+    - Critérios de alta médica específicos?
+    - Quais condições sinalizam a alta clínica?
+    - Que critérios considera para liberar o paciente?
+    - Quando considera apropriado dar alta?
+    - Quais fatores determinam a alta hospitalar?
+    - Critérios de liberação do paciente internado?
+    - Quais são os critérios para alta neste caso?
+    - Quando o paciente está pronto para a alta?
+    - Que parâmetros utiliza para conceder alta?
+    - Critérios de alta hospitalar a serem seguidos?
+    - Quais condições permitem liberar o paciente?
+    - Que elementos definem a alta clínica?
+    - Quando considera seguro dar alta?
+    - Quais critérios usa para determinar a alta?
+    - Critérios de liberação do paciente internado?
+    - Quais são os critérios de alta médica usuais?
+    - Quando o paciente se encaixa nos critérios?
+    - Que requisitos avalia para dar alta?
+    - Critérios de alta hospitalar específicos?
+    - Quais condições indicam a alta clínica?
+    - Que parâmetros levam à alta do paciente?
+    - Quando é apropriado conceder alta médica?
+    - Quais critérios são necessários para a alta?
+    - Quando o paciente atinge os critérios de alta?
+    - Que fatores influenciam a alta hospitalar?
+    - Critérios de liberação do paciente internado?
+    - Quais são os critérios padrão de alta médica?
+    - Quando considera seguro dar alta clínica?
+    - Quais elementos determinam a alta do paciente?
+    - Critérios de alta hospitalar em situações assim?
+    - Quais condições sinalizam a alta médica?
+    - Que requisitos para dar alta são essenciais?
+    - Quando o paciente se qualifica para a alta?
+    - Que parâmetros você avalia antes da alta?
+    - Critérios de liberação do paciente internado aqui?

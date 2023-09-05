@@ -1,0 +1,96 @@
+version: "3.1"
+
+nlu:
+- intent: sepse_tem
+  examples: |
+    - Essa paciente tem sepse?
+    - Essa paciente está com sepse?
+    - É sepse?
+    - SEPSE?
+    - Paciente do [sexo masculino]{"entity": "sexo", "value": "M"}, [60 anos](entity_idade), com adenocarcinoma metastático, apresentando tosse produtiva e dor ventilatório-dependente à direita, [frequência respiratória (FR) de 28](entity_frequencia_respiratoria), frequência cardíaca (FC) de 85, [diagnóstico de pneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Nesse cenário, existe suspeita de sepse (SIRS) ou outra infecção sistêmica?
+    - [Uma paciente]{"entity": "sexo", "value": "F"} de [48 anos](entity_idade), [diabética]{"entity": "entity_comorbidade_diabetes", "value": 1}, com [saturação de oxigênio (SaO2) em 92%](entity_saturacao_de_oxigenio), sonolência e [confusão mental]{"entity": "entity_nivel_de_consciencia", "value": "Confuso"} (GCS reduzido). Considerando esses dados clínicos, você consideraria a possibilidade de sepse (Sepsis) ou outra infecção sistêmica?
+    - [Homem]{"entity": "sexo", "value": "M"} de [75 anos](entity_idade) com [pressão arterial sistólica (PAS) de 150 mmHg](entity_pressao_arterial_sistolica), FC de 85 bpm, tosse produtiva e [suspeita de pneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Diante dessas informações, você avaliaria a presença de sepse (SIRS) ou infecção sistêmica?
+    - Este paciente de [35 anos](entity_idade), tabagista e neutropênico, apresenta FC de 100 bpm, [FR de 28](entity_frequencia_respiratoria), [insuficiência respiratória]{"entity": "entity_comorbidade_ir", "value": 1}, [broncopneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Você suspeitaria de sepse (SIRS) ou outra infecção sistêmica nesse contexto?
+    - [Uma mulher]{"entity": "sexo", "value": "F"} de [55 anos](entity_idade), com doença reumatológica, [pressão arterial diastólica (PAD) de 60 mmHg](entity_pressao_arterial_diastolica), e [nível de consciência estuporoso (AVPU)]{"entity": "entity_nivel_de_consciencia", "value": "Inconsciente"}. Foi [diagnosticada com pneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Você investigaria a presença de sepse (Sepsis) ou infecção sistêmica?
+    - [Homem]{"entity": "sexo", "value": "M"} de [70 anos](entity_idade), com [PAS de 180 mmHg](entity_pressao_arterial_sistolica), [FR de 34 irpm](entity_frequencia_respiratoria), glicemia de 220 mg/dL e internado com diagnóstico de sepse grave (Sepsis-3). Com base nessas informações clínicas, confirmaria o diagnóstico de sepse (Sepsis) ou outra infecção sistêmica?
+    - Paciente de [45 anos](entity_idade), cardiopata, com [SaO2 de 94%](entity_saturacao_de_oxigenio), tosse produtiva e [suspeita de pneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Diante dessas informações, você suspeitaria de sepse (SIRS) ou infecção sistêmica?
+    - [Mulher]{"entity": "sexo", "value": "F"} de [58 anos](entity_idade), hipertensa, com [PAD de 70 mmHg](entity_pressao_arterial_diastolica), FC de 72 bpm, [sonolenta]{"entity": "entity_nivel_de_consciencia", "value": "Confuso"} e [diagnóstico de pneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Você consideraria a possibilidade de sepse (Sepsis) ou infecção sistêmica?
+    - [Homem]{"entity": "sexo", "value": "M"} de [65 anos](entity_idade), dialítico, com [PAS de 160 mmHg](entity_pressao_arterial_sistolica), [FR de 29 irpm](entity_frequencia_respiratoria) e [nível de consciência alerta]{"entity": "entity_nivel_de_consciencia", "value": "Alerta"}. Foi [diagnosticado com broncopneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Você investigaria a presença de sepse (SIRS) ou outra infecção sistêmica?
+    - Paciente de [40 anos](entity_idade), tabagista, com FC de 88 bpm, [insuficiência respiratória grave (ARDS)]{"entity": "entity_comorbidade_ir", "value": 1} e [diagnóstico de pneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Nesse cenário, existe suspeita de sepse (Sepsis) ou outra infecção sistêmica?
+    - [Mulher]{"entity": "sexo", "value": "F"} de [72 anos](entity_idade), com obesidade, [PAS de 140 mmHg](entity_pressao_arterial_sistolica), [SaO2 de 95%](entity_saturacao_de_oxigenio), tosse produtiva e [broncopneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Você suspeitaria de sepse (SIRS) ou infecção sistêmica?
+    - [Homem]{"entity": "sexo", "value": "M"} de [53 anos](entity_idade), com cirurgia prévia, glicemia de 130 mg/dL, [sonolento]{"entity": "entity_nivel_de_consciencia", "value": "Confuso"} e [diagnóstico de pneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Diante dessas informações clínicas, você consideraria a possibilidade de sepse (Sepsis) ou infecção sistêmica?
+    - Paciente de [68 anos](entity_idade), com dislipidemia, [PAD de 75 mmHg](entity_pressao_arterial_diastolica), FC de 70 bpm, [insuficiência respiratória]{"entity": "entity_comorbidade_ir", "value": 1} e [suspeita de pneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Você investigaria a presença de sepse (SIRS) ou outra infecção sistêmica?
+    - [Mulher]{"entity": "sexo", "value": "F"} de [47 anos](entity_idade), com lupus, [SaO2 de 93%](entity_saturacao_de_oxigenio), [nível de consciência estuporoso (AVPU)]{"entity": "entity_nivel_de_consciencia", "value": "Inconsciente"} e [diagnóstico de broncopneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Nesse cenário, você suspeitaria de sepse (Sepsis) ou outra infecção sistêmica?
+    - [Homem]{"entity": "sexo", "value": "M"} de [55 anos](entity_idade), neutropênico, glicemia de 180 mg/dL, [PAS de 130 mmHg](entity_pressao_arterial_sistolica), [FR de 32 irpm](entity_frequencia_respiratoria) e [diagnóstico de pneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Você consideraria a possibilidade de sepse (SIRS) ou infecção sistêmica nesse contexto?
+    - Paciente de [62 anos](entity_idade), com arritmia, [PAD de 68 mmHg](entity_pressao_arterial_diastolica), [sonolento]{"entity": "entity_nivel_de_consciencia", "value": "Confuso"} e [insuficiência respiratória grave (ARDS)]{"entity": "entity_comorbidade_ir", "value": 1}. Foi [diagnosticado com broncopneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Diante dessas informações, você investigaria a presença de sepse (Sepsis) ou outra infecção sistêmica?
+    - [Mulher]{"entity": "sexo", "value": "F"} de [42 anos](entity_idade), com artrite reumatoide, [PAS de 150 mmHg](entity_pressao_arterial_sistolica), FC de 95 bpm, tosse produtiva e [diagnóstico de pneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Suspeita de sepse (SIRS) ou infecção sistêmica?
+    - [Homem]{"entity": "sexo", "value": "M"} de [49 anos](entity_idade), tabagista, com FC de 78 bpm, [SaO2 de 96%](entity_saturacao_de_oxigenio), [sonolento]{"entity": "entity_nivel_de_consciencia", "value": "Confuso"} e [diagnóstico de broncopneumonia]{"entity": "entity_tem_pneumonia", "value": 1}. Você consideraria a possibilidade de sepse (Sepsis) ou outra infecção sistêmica nesse contexto?
+
+- intent: sepse_quando_considerar
+  examples: |
+    - Quando devo considerar sepse?
+    - Quais critérios para suspeitar de sepse?
+    - Quando pensar em sepse no diagnóstico?
+    - Indicadores de sepse no paciente?
+    - Sepse: quando é uma preocupação?
+    - Protocolo para identificar sepse?
+    - Quando suspeitar de sepse no pronto-socorro?
+    - Sepse: quais sinais clínicos buscar?
+    - Como reconhecer sepse no hospital?
+    - Critérios para avaliar sepse em UTI?
+    - Qual a importância da P-SEP?
+    - Quando acionar o time de sepse?
+    - Sepse: quais os marcadores laboratoriais?
+    - Qual a relação com SIRS e MODS?
+    - Quando considerar sepse em pediatria?
+    - Avaliação rápida de sepse no idoso?
+    - Pode falar sobre sepse grave?
+    - Como investigar sepse em neonatos?
+    - Sinais de sepse em pacientes imunossuprimidos?
+    - Qual conduta em sepse abdominal?
+    - Protocolo de sepse no pós-operatório?
+    - Sepse neonatal: diagnóstico precoce?
+    - Quando suspeitar de sepse em gestantes?
+    - Sepse em pacientes oncológicos: cuidados?
+    - Como abordar sepse em pacientes com HIV?
+    - Sepse por COVID-19: o que observar?
+    - Protocolo de tratamento em sepse grave?
+    - Qual a relação com choque séptico?
+    - Diagnóstico de sepse por critérios SSC?
+    - Quando pensar em sepse em pacientes febris?
+    - Sepse: conduta em pacientes idosos?
+    - Como detectar sepse em quadros infecciosos?
+    - Sepse pulmonar: quais sinais clínicos?
+    - Avaliação de sepse em pacientes desidratados?
+    - Quando acionar o time de sepse pediátrica?
+    - Sepse em pacientes com doenças crônicas?
+    - Diagnóstico de sepse por critérios Sepsis-3?
+    - Sinais de sepse em pacientes com DPOC?
+    - Sepse abdominal: o que observar?
+    - Quando considerar sepse em lactentes?
+    - Protocolo de tratamento em sepse neonatal?
+    - Como abordar sepse em pacientes com asma?
+    - Sepse por COVID-19 em pacientes idosos?
+    - Protocolo de tratamento em sepse pulmonar?
+    - Sepse: quando suspeitar de foco abdominal?
+    - Diagnóstico de sepse: procalcitonina ajuda?
+    - Sinais de sepse em pacientes com diabetes?
+    - Sepse em pacientes com insuficiência renal?
+    - Quando acionar a equipe de sepse obstétrica?
+    - Sepse e choque séptico: qual a diferença?
+    - Como reconhecer sepse em pacientes críticos?
+
+- intent: sepse_quando_coletar
+  examples: |
+    - Quando coletar o pacote de sepse?
+    - Preciso coletar sepse?
+
+- intent: sepse_hidratar_quando
+  examples: |
+    - Preciso hidratar esse paciente?
+
+- lookup: entity_nivel_de_consciencia
+  examples: |
+    - Alerta
+    - Inconsciente
+    - Confuso

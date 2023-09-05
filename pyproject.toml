@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "python-project-template"
 version = "2.0.0-rc.1"
-description = "Template for python projects"
+description = ""
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 

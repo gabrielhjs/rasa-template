@@ -18,11 +18,11 @@ tracker_store:
   username: ${POSTGRES_USERNAME}
   password: ${POSTGRES_PASSWORD}
 
-event_broker:
-  type: pika
-  url: ${RABBITMQ_URL}
-  username: ${RABBITMQ_USERNAME}
-  password: ${RABBITMQ_PASSWORD}
-  queues:
-    - ${RABBITMQ_QUEUE}
-  exchange_name: exchange
+# event_broker:
+#   type: pika
+#   url: ${RABBITMQ_URL}
+#   username: ${RABBITMQ_USERNAME}
+#   password: ${RABBITMQ_PASSWORD}
+#   queues:
+#     - ${RABBITMQ_QUEUE}
+#   exchange_name: exchange

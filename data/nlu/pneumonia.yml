@@ -1,0 +1,213 @@
+version: "3.1"
+
+nlu:
+- intent: pneumonia_diagnostico
+  examples: |
+    - Como fazer o diagnóstico de pneumonia?
+    - Quais critérios para Dx de pneumonia?
+    - Pode explicar os passos no Dx de pneumonia?
+    - Quais são os indicadores de pneumonia?
+    - Como reconhecer pneumonia clinicamente?
+    - Protocolo de Dx de pneumonia infantil?
+    - Pneumonia: exames necessários?
+    - Pneumonia: RX é crucial no diagnóstico?
+    - Dx de pneumonia viral vs. bacteriana?
+    - Etiologia da pneumonia: como identificar?
+    - Sinais de pneumonia em idosos?
+    - Dx de pneumonia em crianças?
+    - Qual abordagem em pacientes imunossuprimidos?
+    - Pneumonia: quando suspeitar em bebês?
+    - Como confirmar pneumonia por imagem?
+    - Pneumonia: cultura quando indicada?
+    - Quais marcadores no diagnóstico de pneumonia?
+    - Protocolo de diagnóstico em pneumonia grave?
+    - Diagnóstico de pneumonia hospitalar?
+    - Como diferenciar pneumonia e bronquite?
+    - Pneumonia: quando pensar em aspiração?
+    - Etiologia da pneumonia em pediatria?
+    - Dx de pneumonia em pacientes asmáticos?
+    - Sinais de pneumonia em pacientes com HIV?
+    - Dx de pneumonia por COVID-19?
+    - Avaliação radiológica da pneumonia?
+    - Dx de pneumonia em pacientes com DPOC?
+    - Quando suspeitar de embolia na pneumonia?
+    - Qual conduta na pneumonia comunitária?
+    - Como realizar o diagnóstico precoce?
+    - Pneumonia: protocolo em UTI?
+    - Qual papel do hemograma no Dx?
+    - Sinais clínicos típicos de pneumonia?
+    - Pneumonia: quando considerar broncoscopia?
+    - Diagnóstico diferencial com tuberculose?
+    - Qual impacto de comorbidades no diagnóstico?
+    - Etiologia viral comum em crianças?
+    - Dx de pneumonia em pacientes febris?
+    - Como avaliar pneumonia em gestantes?
+    - Pneumonia necrotizante: como confirmar?
+    - Pneumonia por aspiração: sinais frequentes?
+    - Dx de pneumonia por varicela?
+    - Pneumonia intersticial: quais achados?
+    - Avaliação laboratorial em pneumonia?
+    - Dx de pneumonia necrotizante em idosos?
+    - Como proceder com pneumonia grave?
+    - Pneumonia: quadro clínico típico?
+    - Avaliação de pneumonia em pacientes crônicos?
+    - Pneumonia em imunodeprimidos: como abordar?
+    - Dx de pneumonia em pacientes agitados?
+    - Pneumonia: diagnóstico em paciente febril?
+
+- intent: pneumonia_o_que_e
+  examples: |
+    - O que é pneumonia?
+    - Qual é a definição de pneumonia?
+    - Explique pneumonia em termos simples.
+    - Defina pneumonia de forma clara.
+    - O que caracteriza a pneumonia?
+    - Pode explicar o conceito de pneumonia?
+    - Descreva pneumonia de maneira sucinta.
+    - O que significa o termo "pneumonia"?
+    - Pneumonia: o que é clinicamente?
+    - Explique pneumonia em linguagem leiga.
+    - Definição de pneumonia em medicina.
+    - Pode esclarecer o termo "pneumonia"?
+    - O que os pacientes devem saber sobre pneumonia?
+    - Breve explicação sobre pneumonia.
+    - Pneumonia: qual é a sua essência?
+    - Como você descreveria pneumonia?
+    - O que os médicos entendem por pneumonia?
+    - Pneumonia: uma definição simples.
+    - Em termos médicos, o que é pneumonia?
+    - Pode dar uma visão geral da pneumonia?
+    - O que é pneumonia na linguagem comum?
+    - Descreva pneumonia de maneira básica.
+    - Significado clínico de pneumonia.
+    - Pneumonia: definição compreensível.
+    - O que pneumonia representa na medicina?
+    - Explique pneumonia de forma acessível.
+    - Pneumonia: o que isso implica?
+    - Defina pneumonia em poucas palavras.
+    - Pode simplificar o conceito de pneumonia?
+    - O que os pacientes precisam saber sobre pneumonia?
+    - Breve resumo sobre pneumonia.
+    - O que a medicina entende por pneumonia?
+    - Pneumonia: explicação concisa.
+    - Como você resumiria pneumonia?
+    - O que significa pneumonia para os médicos?
+    - Pneumonia: definição direta.
+    - Em termos simples, o que é pneumonia?
+    - Pode dar uma visão geral simples da pneumonia?
+    - O que é pneumonia em linguagem cotidiana?
+    - Descrição básica de pneumonia.
+    - Significado médico de pneumonia.
+    - Pneumonia: definição acessível.
+    - O que pneumonia representa clinicamente?
+    - Explique pneumonia de forma fácil.
+    - Pneumonia: o que isso envolve?
+    - Defina pneumonia de maneira sucinta.
+    - Pode simplificar a ideia de pneumonia?
+    - O que os pacientes precisam entender sobre pneumonia?
+    - Breve explicação sobre pneumonia.
+    - O que a medicina quer dizer com pneumonia?
+    - Pneumonia: definição concisa.
+    - Como você descreveria pneumonia de forma breve?
+
+- intent: pneumonia_sinais_fisicos_para_cada_tipo
+  examples: |
+    - Sinais físicos para tipos específicos de pneumonia?
+    - Quais indicadores clínicos apontam para pneumonia típica?
+    - Como identificar manifestações físicas de pneumonia atípica?
+    - Quais são os sinais clínicos de pneumonia bacteriana?
+    - Quais sintomas físicos sugerem pneumonia viral?
+    - Pode descrever os achados físicos de pneumonia por aspiração?
+    - Quais indicativos clínicos de pneumonia adquirida na comunidade devo observar?
+    - Quais são os sinais físicos característicos da pneumonia hospitalar?
+    - Quais manifestações físicas são comuns em pneumonia por Legionella?
+    - Quais são os achados clínicos de pneumonia por Mycoplasma?
+    - Como reconhecer sinais de pneumonia por Pneumocystis jirovecii?
+    - Quais são os sinais físicos distintivos de pneumonia por Klebsiella?
+    - Quais manifestações clínicas indicam pneumonia por Streptococcus pneumoniae?
+    - Pode descrever os sintomas físicos de pneumonia por Haemophilus influenzae?
+    - Quais sinais clínicos são típicos de pneumonia por Staphylococcus aureus?
+    - Quais indicadores físicos apontam para pneumonia por Pseudomonas aeruginosa?
+    - Como reconhecer achados clínicos de pneumonia por Gram-negativos?
+    - Quais manifestações físicas são comuns em pneumonia por anaeróbios?
+    - Quais são os sinais clínicos de pneumonia por vírus da gripe?
+    - Quais são os indicativos físicos de pneumonia por vírus sincicial respiratório?
+    - Como identificar sinais de pneumonia por adenovírus?
+    - Quais manifestações clínicas são típicas de pneumonia por parainfluenza?
+    - Quais sintomas físicos sugerem pneumonia por citomegalovírus?
+    - Quais são os achados clínicos de pneumonia por SARS-CoV-2?
+    - Pode descrever os indicadores físicos de pneumonia por varicela-zóster?
+    - Quais sinais clínicos são comuns em pneumonia por herpes simples?
+    - Quais são os indicativos físicos de pneumonia por CMV?
+    - Quais manifestações clínicas indicam pneumonia por HIV?
+    - Quais são os sintomas físicos de pneumonia por coccidioidomicose?
+    - Quais indicadores físicos apontam para pneumonia por histoplasmose?
+    - Como identificar achados clínicos de pneumonia por blastomicose?
+    - Quais são os sinais clínicos de pneumonia por pneumocistose?
+    - Quais sintomas físicos sugerem pneumonia por candidíase?
+    - Pode descrever os indicadores físicos de pneumonia por Aspergillus?
+    - Quais manifestações clínicas são típicas de pneumonia por Mucorales?
+    - Quais são os achados clínicos de pneumonia por Cryptococcus?
+    - Quais sinais clínicos são comuns em pneumonia por nocardiose?
+    - Quais são os indicativos físicos de pneumonia por actinomicose?
+    - Como reconhecer sintomas físicos de pneumonia por Pneumocystis carinii?
+    - Quais são os sinais físicos característicos de pneumonia por Rhodococcus?
+    - Quais manifestações clínicas indicam pneumonia por Burkholderia?
+    - Quais são os achados físicos de pneumonia por Francisella tularensis?
+    - Quais são os sintomas físicos de pneumonia por Coxiella burnetii?
+    - Pode descrever os indicativos clínicos de pneumonia por Chlamydia psittaci?
+    - Quais são os sinais clínicos de pneumonia por Mycobacterium tuberculosis?
+    - Quais sintomas físicos sugerem pneumonia por nontuberculous mycobacteria?
+    - Quais são os achados clínicos de pneumonia por nocardia asteroides?
+    - Quais sinais físicos são típicos de pneumonia por legionella pneumophila?
+    - Quais manifestações clínicas indicam pneumonia por Chlamydia pneumoniae?
+    - Quais são os indicativos físicos de pneumonia por Coxiella burnetii?
+    - Como identificar sinais de pneumonia por Moraxella catarrhalis?
+
+- intent: pneumonia_cid
+  examples: |
+    - Qual é o CID de pneumonia?
+    - Qual é o código CID da pneumonia?
+    - Poderia fornecer o código para pneumonia?
+    - CID da pneumonia, por gentileza?
+    - Qual cod doença corresponde à pneumonia?
+    - Gostaria de saber o CID para pneumonia.
+    - O código CID da pneumonia é qual?
+    - Pode me dar o CID da pneumonia?
+    - Qual é o CID da pneumonia, doutor?
+    - Preciso do CID específico para pneumonia.
+    - Qual é a classificação CID da pneumonia?
+    - Pode me informar o código CID para pneumonia?
+    - Qual é o código internacional para pneumonia?
+    - Doutor, qual o CID para pneumonia?
+    - Preciso do código CID da pneumonia, por favor.
+    - Gostaria de saber o CID da pneumonia, por favor.
+    - Pode me dizer o CID correspondente à pneumonia?
+    - Doutor, qual é o CID da pneumonia?
+    - Poderia fornecer o CID da pneumonia?
+    - Qual o código CID utilizado para pneumonia?
+    - Qual CID é atribuído à pneumonia?
+    - Qual é o código de classificação da pneumonia?
+    - Gostaria de saber o CID específico para pneumonia.
+    - Doutor, qual é o código internacional da pneumonia?
+    - Preciso do código CID para pneumonia, por favor.
+    - Qual é a codificação CID da pneumonia?
+    - Pode me dar o código CID da pneumonia?
+    - Poderia informar o código CID para pneumonia?
+    - Qual é o CID associado à pneumonia?
+    - Gostaria de obter o código CID da pneumonia.
+    - Doutor, qual é o CID para pneumonia?
+
+- intent: pneumonia_quando_aplicar_antiviral
+  examples: |
+    - Antivirais na pneumonia: quando usar?
+    - Devo utilizar antiviral na pneumonia?
+    - Quando usar antiviral na pneumonia?
+
+- intent: pneumonia_quando_tratar_uti
+  examples: |
+    - Diretrizes para internação na UTI com pneumonia?
+
+- intent: pneumonia_quando_tratar_casa
+  examples: |
+    - Pneumonia tratada em casa: quando?

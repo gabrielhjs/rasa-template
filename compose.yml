@@ -69,8 +69,11 @@ services:
 
   rabbitmq:
     profiles:
-      - rasa
+      - rasa2
     container_name: rabbitmq
+    build:
+      context: ./
+      dockerfile: docker/Rabbitmq.Dockerfile
     image: rabbitmq:3-management-alpine
     restart: always
     ports:
@@ -86,7 +89,7 @@ services:
     container_name: duckling
     image: rasa/duckling:0.2.0.2
     ports:
-      - "8000"
+      - "8000:8000"
 
   rocketchat:
     profiles:

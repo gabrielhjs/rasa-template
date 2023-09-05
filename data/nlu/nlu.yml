@@ -1,0 +1,104 @@
+version: "3.1"
+
+nlu:
+- intent: informa
+  examples: |
+    - 10
+    - 30
+    - é 23
+    - $0.00
+    - $1000
+    - 0
+    - 10 m
+    - 1000000
+    - 100000
+    - 1000
+    - 100
+    - 10
+    - 10k
+    - 120000
+    - 1231
+    - 12
+    - 200000000
+    - 20000
+    - 20000k
+    - 2000k
+    - 200k
+    - 25,000
+    - 300000
+    - 300k
+    - 3
+    - 500000
+    - 5000
+    - 500k
+    - 50 p
+    - 6000000
+    - 90k
+    - 99
+
+- intent: saudacao
+  examples: |
+    - Oi
+    - Olá
+    - Bom dia
+    - boa tarde
+    - boa noite
+    - Oieeeee
+
+- intent: afirma
+  examples: |
+    - sim
+    - uhum
+    - SIM
+    - S
+    - Y
+    - YES
+    - yes
+    - y
+    - uhummm
+    - Sim
+
+- intent: nega
+  examples: |
+    - Não
+    - não
+    - nao
+    - n
+    - N
+    - nop
+    - no
+    - No
+
+- intent: bacteria_multirresistente_tem_fator_de_risco
+  examples: |
+    - Ele tem fator de risco para bactéria multirresistente?
+    - Paciente de [60 anos](entity_idade), tabagista, com tosse produtiva e dor à direita, [FR de 28](entity_frequencia_respiratoria), FC de 90 bpm, [SatO2 92%](entity_saturacao_de_oxigenio), [PAS 140 mmHg](entity_pressao_arterial_sistolica), [PAD 80 mmHg](entity_pressao_arterial_diastolica), glicemia 120 mg/dL, e [nível de consciência alerta]{"entity": "entity_nivel_de_consciencia", "value": "Alerta"}. Apresenta FRCBMR?
+    - [Homem]{"entity": "sexo", "value": "M"} de [48 anos](entity_idade), [diabético]{"entity": "entity_comorbidade_diabetes", "value": 1}, com FC de 75 bpm, [SatO2 95%](entity_saturacao_de_oxigenio), [PAS 130 mmHg](entity_pressao_arterial_sistolica), [PAD 70 mmHg](entity_pressao_arterial_diastolica), glicemia 160 mg/dL, e [nível de consciência sonolento]{"entity": "entity_nivel_de_consciencia", "value": "Confuso"}. Há risco de MDR/XDR?
+    - [Mulher]{"entity": "sexo", "value": "F"} de [75 anos](entity_idade), hipertensa, com [FR de 24](entity_frequencia_respiratoria), FC de 88 bpm, [SatO2 94%](entity_saturacao_de_oxigenio), [PAS 150 mmHg](entity_pressao_arterial_sistolica), [PAD 75 mmHg](entity_pressao_arterial_diastolica), glicemia 180 mg/dL, e [nível de consciência estuporoso]{"entity": "entity_nivel_de_consciencia", "value": "Inconsciente"}. Apresenta fatores de risco para BMR?
+    - Paciente de [35 anos](entity_idade), neutropênico, com tosse produtiva e dor à esquerda, [FR de 30](entity_frequencia_respiratoria), FC de 100 bpm, [SatO2 91%](entity_saturacao_de_oxigenio), [PAS 120 mmHg](entity_pressao_arterial_sistolica), [PAD 65 mmHg](entity_pressao_arterial_diastolica), glicemia 140 mg/dL, e [nível de consciência alerta]{"entity": "entity_nivel_de_consciencia", "value": "Alerta"}. Ele possui FRCBMR?
+    - [Homem]{"entity": "sexo", "value": "M"} de [55 anos](entity_idade), com adenocarcinoma metastático, [FR de 32](entity_frequencia_respiratoria), FC de 110 bpm, [SatO2 90%](entity_saturacao_de_oxigenio), [PAS 140 mmHg](entity_pressao_arterial_sistolica), [PAD 70 mmHg](entity_pressao_arterial_diastolica), glicemia 200 mg/dL, e [nível de consciência sonolento]{"entity": "entity_nivel_de_consciencia", "value": "Confuso"}. Há risco de MDR/XDR?
+    - [Mulher]{"entity": "sexo", "value": "F"} de [48 anos](entity_idade), sem comorbidades, com tosse produtiva e dor à direita, [FR de 26](entity_frequencia_respiratoria), FC de 80 bpm, [SatO2 96%](entity_saturacao_de_oxigenio), [PAS 120 mmHg](entity_pressao_arterial_sistolica), [PAD 70 mmHg](entity_pressao_arterial_diastolica), glicemia 110 mg/dL, e [nível de consciência alerta]{"entity": "entity_nivel_de_consciencia", "value": "Alerta"}. Apresenta FRCBMR?
+    - Paciente de [70 anos](entity_idade), com [insuficiência cardíaca crônica], [FR de 28](entity_frequencia_respiratoria), FC de 70 bpm, [SatO2 93%](entity_saturacao_de_oxigenio), [PAS 130 mmHg](entity_pressao_arterial_sistolica), [PAD 75 mmHg](entity_pressao_arterial_diastolica), glicemia 150 mg/dL, e [nível de consciência estuporoso]{"entity": "entity_nivel_de_consciencia", "value": "Inconsciente"}. Ele possui fatores de risco para BMR?
+    - [Homem]{"entity": "sexo", "value": "M"} de [45 anos](entity_idade), tabagista, com tosse produtiva e dor à esquerda, [FR de 34](entity_frequencia_respiratoria), FC de 95 bpm, [SatO2 89%](entity_saturacao_de_oxigenio), [PAS 140 mmHg](entity_pressao_arterial_sistolica), [PAD 70 mmHg](entity_pressao_arterial_diastolica), glicemia 130 mg/dL, e [nível de consciência alerta]{"entity": "entity_nivel_de_consciencia", "value": "Alerta"}. Há risco para bactéria multirresistente nesse caso?
+    - [Mulher]{"entity": "sexo", "value": "F"} de [58 anos](entity_idade), com doença reumatológica, [FR de 25](entity_frequencia_respiratoria), FC de 75 bpm, [SatO2 94%](entity_saturacao_de_oxigenio), [PAS 120 mmHg](entity_pressao_arterial_sistolica), [PAD 65 mmHg](entity_pressao_arterial_diastolica), glicemia 160 mg/dL, e [nível de consciência sonolento]{"entity": "entity_nivel_de_consciencia", "value": "Confuso"}. Apresenta fatores de risco para bactéria multirresistente?
+    - Paciente de [65 anos](entity_idade), dialítico, com tosse produtiva e dor à direita, [FR de 27](entity_frequencia_respiratoria), FC de 80 bpm, [SatO2 91%](entity_saturacao_de_oxigenio), [PAS 130 mmHg](entity_pressao_arterial_sistolica), [PAD 70 mmHg](entity_pressao_arterial_diastolica), glicemia 170 mg/dL, e [nível de consciência alerta]{"entity": "entity_nivel_de_consciencia", "value": "Alerta"}. Ele tem risco para bactéria multirresistente?
+    - [Homem]{"entity": "sexo", "value": "M"} de [40 anos](entity_idade), [com câncer]{"entity": "entity_comorbidade_cancer", "value": 1}, [FR de 26](entity_frequencia_respiratoria), FC de 85 bpm, [SatO2 92%](entity_saturacao_de_oxigenio), [PAS 120 mmHg](entity_pressao_arterial_sistolica), [PAD 70 mmHg](entity_pressao_arterial_diastolica), glicemia 140 mg/dL, e [nível de consciência estuporoso]{"entity": "entity_nivel_de_consciencia", "value": "Inconsciente"}. Há risco para bactéria multirresistente nesse caso?
+    - [Mulher]{"entity": "sexo", "value": "F"} de [72 anos](entity_idade), com uso crônico de corticoide, [FR de 30](entity_frequencia_respiratoria), FC de 90 bpm, [SatO2 90%](entity_saturacao_de_oxigenio), [PAS 140 mmHg](entity_pressao_arterial_sistolica), [PAD 75 mmHg](entity_pressao_arterial_diastolica), glicemia 180 mg/dL, e [nível de consciência alerta]{"entity": "entity_nivel_de_consciencia", "value": "Alerta"}. Apresenta fatores de risco para bactéria multirresistente?
+    - Paciente de [35 anos](entity_idade), com neutropenia, tosse produtiva e dor à esquerda, [FR de 28](entity_frequencia_respiratoria), FC de 100 bpm, [SatO2 91%](entity_saturacao_de_oxigenio), [PAS 130 mmHg](entity_pressao_arterial_sistolica), [PAD 70 mmHg](entity_pressao_arterial_diastolica), glicemia 160 mg/dL, e [nível de consciência sonolento]{"entity": "entity_nivel_de_consciencia", "value": "Confuso"}. Ele tem risco para bactéria multirresistente?
+    - [Homem]{"entity": "sexo", "value": "M"} de [55 anos](entity_idade), com arritmia, [FR de 32](entity_frequencia_respiratoria), FC de 110 bpm, [SatO2 89%](entity_saturacao_de_oxigenio), [PAS 140 mmHg](entity_pressao_arterial_sistolica), [PAD 70 mmHg](entity_pressao_arterial_diastolica), glicemia 200 mg/dL, e [nível de consciência estuporoso]{"entity": "entity_nivel_de_consciencia", "value": "Inconsciente"}. Há risco para bactéria multirresistente nesse caso?
+    - [Mulher]{"entity": "sexo", "value": "F"} de [47 anos](entity_idade), com tabagismo, tosse produtiva e dor à direita, [FR de 27](entity_frequencia_respiratoria), FC de 95 bpm, [SatO2 91%](entity_saturacao_de_oxigenio), [PAS 120 mmHg](entity_pressao_arterial_sistolica), [PAD 65 mmHg](entity_pressao_arterial_diastolica), glicemia 110 mg/dL, e [nível de consciência alerta]{"entity": "entity_nivel_de_consciencia", "value": "Alerta"}. Apresenta fatores de risco para bactéria multirresistente?
+    - Paciente de [62 anos](entity_idade), com [cardiopatia], [FR de 24](entity_idade), FC de 80 bpm, [SatO2 93%](entity_saturacao_de_oxigenio), [PAS 130 mmHg](entity_pressao_arterial_sistolica), [PAD 70 mmHg](entity_pressao_arterial_diastolica), glicemia 150 mg/dL, e [nível de consciência sonolento]{"entity": "entity_nivel_de_consciencia", "value": "Confuso"}. Ele tem risco para bactéria multirresistente?
+    - [Homem]{"entity": "sexo", "value": "M"} de [49 anos](entity_idade), com cirurgia prévia, tosse produtiva e dor à esquerda, [FR de 29](entity_frequencia_respiratoria), FC de 75 bpm, [SatO2 92%](entity_saturacao_de_oxigenio), [PAS 120 mmHg](entity_pressao_arterial_sistolica), [PAD 70 mmHg](entity_pressao_arterial_diastolica), glicemia 140 mg/dL, e [nível de consciência alerta]{"entity": "entity_nivel_de_consciencia", "value": "Alerta"}. Há risco para bactéria multirresistente nesse caso?
+
+- intent: escarro_quando_coletar
+  examples: |
+    - Preciso coletar escarro?
+    - Quando coletar escarro?
+
+- intent: aspirado_de_secrecao_traquial_quando
+  examples: |
+    - Adianta fazer aspirado de secreção traqueal para envio de cultura?
+
+- intent: lavado_quando
+  examples: |
+    - Devo fazer lavado?

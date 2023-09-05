@@ -1,0 +1,36 @@
+version: "3.1"
+
+nlu:
+- intent: fora_do_escopo
+  examples: |
+    - Pode ser tuberculose?
+    - Pode ser vírus?
+    - O teste de COVID-19 pode ser falso-negativo?
+    - Devemos pensar em infcção fùngicida?
+    - Devo pedir exame de HIV?
+    - Como diferenciar pneumonia de outras doenças respiratórias?
+    - Biópsia pulmonar para confirmar pneumonia: necessária?
+    - CURB-65 é apropriado para todos?
+    - Outros escores de risco além do CURB-65?
+    - Quando fazer broncoscopia?
+    - Preciso isolar o paciente?
+    - Posso fazer cefepima pela neurotoxicidade?
+    - Considerando a idade e o estado de saúde da paciente, qual seria o melhor curso de tratamento para a pneumonia aspirativa?
+    - Devo fazer corticoide?
+    - Preciso ajustar a dose de antibiotico?
+    - Quando eu preciso trocar de antibiotico?
+    - Qual classe de antibiótico?
+    - Posso fazer outro betalactâmico?
+    - Preciso ajustar a dose de antibiotico por ser câncer?
+    - A imunoterapia pode fazer esse quadro?
+    - Quando pensar em pneumococo resistente?
+    - Quais bactérias devo cobrir?
+    - A quimoterapia deve ser interrompida?
+    - Tratamento para pneumonia em grávidas?
+    - Opções de 2ª linha para resistência bacteriana?
+    - Como manejar interações medicamentosas?
+    - Quanto tempo até melhora com antibiótico?
+    - Precisa de ajuste para função renal?
+    - Como identificar efeitos colaterais do antibiótico?
+    - Quando encaminhar para especialista?
+    - Como prevenir recorrências de pneumonia?

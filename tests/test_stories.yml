@@ -12,7 +12,7 @@ stories:
 - story: texto completo de sepse
   steps:
   - user: |
-      paciente com [frequência respiratória de 30 respirações/min](entity_frequencia_respiratoria), com [confusão mental](entity_nivel_de_consciencia) e [pressão arterial de 90 mmHg](entity_pressao_arterial) tem sepse?
+      paciente com [frequência respiratória de 30 respirações/min](entity_frequencia_respiratoria), com [confusão mental](entity_nivel_de_consciencia) e [pressão arterial de 90 mmHg](entity_pressao_arterial_sistolica tem sepse?
     intent: paciente_possui_sepse
   - action: sepse_form
   - active_loop: sepse_form

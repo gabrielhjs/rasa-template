@@ -1,0 +1,9 @@
+apiVersion: v2
+name: laura-care-duvidas-generalista-actions
+description:  A Helm chart for deploying the laura-care-duvidas-generalista-actions on Kubernetes. 
+home: https://github.com/robo-laura/laura-care-duvidas-generalista-actions
+sources:
+  - https://github.com/robo-laura/laura-care-duvidas-generalista-actions
+type: application
+version: 0.0.0
+appVersion: 0.0.0

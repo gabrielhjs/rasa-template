@@ -1,0 +1,18 @@
+version: "3.1"
+
+rules:
+- rule: ativar form curb65
+  steps:
+  - intent: curb65_qual_e
+  - action: curb65_form
+  - active_loop: curb65_form
+
+- rule: completar form curb65
+  condition:
+  - active_loop: curb65_form
+  steps:
+  - action: curb65_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_calculate_curb65

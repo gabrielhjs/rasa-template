@@ -1,0 +1,9 @@
+apiVersion: v2
+name: gates-asistant
+description:  A Helm chart for deploying the gates-asistant on Kubernetes. 
+home: https://github.com/robo-laura/gates-asistant
+sources:
+  - https://github.com/robo-laura/gates-asistant
+type: application
+version: 0.0.0
+appVersion: 0.0.0

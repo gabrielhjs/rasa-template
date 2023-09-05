@@ -15,4 +15,4 @@ COPY domain.yml domain.yml
 COPY endpoints.yml endpoints.yml
 COPY models models
 
-CMD [ "run" ]
+CMD [ "run", "--enable-api", "-vv" ]

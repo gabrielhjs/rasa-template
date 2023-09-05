@@ -1,0 +1,80 @@
+version: "3.1"
+
+nlu:
+- intent: curb65_qual_escore_de_risco_para_classificar
+  examples: |
+    - Qual é o escore de risco usado para classificar?
+    - Qual escore de risco usamos para estratificação?
+    - Qual escore de risco aplicamos para avaliação?
+    - Qual escore de risco é adotado para categorização?
+    - Qual é o escore de risco para pneumonia?
+    - Que escore de risco utilizamos para classificar?
+    - Qual é o escore de risco padrão?
+    - Qual escore de risco usamos na avaliação?
+    - Que escore de risco é empregado?
+    - Qual é o escore de risco recomendado?
+    - Qual escore de risco é comum na prática?
+    - Qual é o escore de risco clínico relevante?
+    - Que escore de risco é aplicável a este caso?
+    - Qual escore de risco é utilizado internacionalmente?
+    - Que escore de risco é preferido pelos especialistas?
+    - Qual é o escore de risco atualizado?
+    - Qual escore de risco é aceito pela comunidade médica?
+    - Que escore de risco é indicado para esta condição?
+    - Qual é o escore de risco mais apropriado?
+    - Que escore de risco é reconhecido para pneumonia?
+    - Qual é o escore de risco confiável?
+    - Qual escore de risco usamos para categorização?
+    - Qual é o escore de risco padrão em pneumonia?
+    - Que escore de risco é válido aqui?
+    - Qual escore de risco é adotado rotineiramente?
+    - Qual é o escore de risco recomendado pela OMS?
+    - Que escore de risco é usado para estratificar?
+    - Qual escore de risco é preferido nesta situação?
+    - Qual é o escore de risco típico na prática clínica?
+    - Que escore de risco é comumente empregado?
+    - Qual é o escore de risco convencional?
+
+- intent: curb65_como_e
+  examples: |
+    - Como é o CURB-65?
+    - Qual é o procedimento para calcular o CURB-65?
+    - Explique o método de avaliação do CURB-65.
+    - Pode me orientar sobre o cálculo do CURB-65?
+    - Como realizar a pontuação do CURB-65?
+    - Qual é a fórmula para determinar o CURB-65?
+    - Descreva o processo de CURB-65.
+    - O que envolve o cálculo do escore CURB-65?
+    - Como determinar o CURB-65 em um paciente?
+    - Quais critérios são usados para o CURB-65?
+    - Explique as etapas do cálculo do CURB-65.
+    - Pode fornecer informações sobre o CURB-65?
+    - Qual é a relevância clínica do CURB-65?
+    - O que envolve a avaliação do curb-65?
+    - Como o CURB-65 é aplicado em pacientes?
+    - Quais são os componentes do CURB-65?
+    - Como se faz o cálculo do escore CURB-65?
+    - Qual é o propósito do CURB-65 ?
+    - Pode elucidar a utilização do CURB-65 na prática médica?
+    - Como determinar a gravidade da pneumonia com o CURB-65?
+    - Explique a aplicação do CURB-65 em pacientes.
+    - Quais são as diretrizes para aplicar o CURB-65?
+    - Como o CURB-65 auxilia na estratificação de risco?
+    - Pode orientar sobre a interpretação do CURB-65?
+    - O CURB-65 é uma ferramenta útil?
+    - Qual é a importância clínica do CURB-65?
+    - Como o CURB-65 impacta o manejo de pacientes?
+    - Descreva como o CURB-65 influencia as decisões clínicas.
+    - Quais são as implicações do CURB-65 na abordagem terapêutica?
+    - Pode detalhar a aplicação do CURB-65?
+    - Como o CURB-65 é usado na estratificação de pacientes?
+
+- intent: curb65_qual_e
+  examples: |
+    - Qual seria o CURB-65 dessa paciente?
+    - Calcule o CURB-65
+    - Qual é o risco de morte desta paciente?
+
+- intent: curb65_guia_tratamento_antimicrobiano
+  examples: |
+    - CURB-65 guia o tratamento antimicrobiano?

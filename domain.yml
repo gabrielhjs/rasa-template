@@ -1,23 +1,103 @@
 version: "3.1"
 
 intents:
-- diagnostico_pneumonia
 - informa:
     use_entities: []
-- paciente_possui_sepse
-# - isso_e_numero
+- fora_do_escopo
+- bacteria_multirresistente_tem_fator_de_risco
+- escarro_quando_coletar
+- aspirado_de_secrecao_traquial_quando
+- lavado_quando
+- saudacao
+- afirma
+- nega
+
+# Sepse
+- sepse_tem
+- sepse_quando_considerar
+- sepse_quando_coletar
+- sepse_hidratar_quando
+
+# Pneumonia
+- pneumonia_diagnostico
+- pneumonia_o_que_e
+- pneumonia_sinais_fisicos_para_cada_tipo
+- pneumonia_cid
+- pneumonia_quando_aplicar_antiviral
+- pneumonia_quando_tratar_uti
+- pneumonia_quando_tratar_casa
+
+# Antibiotico
+- antibiotico_qual
+- antibiotico_quando_suspender
+- antibiotico_quando_aplicar_via_oral
+- antibiotico_qual_monoterapia_ou_combinada
+- antibiotico_quando_cobrir_virus
+- antibiotico_quando_cobrir_anaerobio
+- antibiotico_quando_cobrir_germes_atipicos
+- antibiotico_qual_tempo_de_tratamento
+- antibiotico_quando_aplicar_dose_de_ataque
+- antibiotico_quando_aplicar_troca_para_oral
+- antibiotico_qual_para_alergia_a_penicilina
+
+# Curb 65
+- curb65_qual_escore_de_risco_para_classificar
+- curb65_como_e
+- curb65_qual_e
+- curb65_guia_tratamento_antimicrobiano
+
+# Exame
+- exame_qual_solicitar
+- exame_de_imagem_qual
+- exame_inicial_quais
+- exame_repetir
+- exame_pre_tratamento_quais
+- exame_raio_x_repetir_quando
+- exame_radiografia_quando_coletar
+- exame_procalcitonina_quando
+- exame_procalcitonina_quando_repetir
+- exame_tomografia_quando
+
+# Internacao
+- internacao_quando
+- internacao
+- internacao_uti_quando
+- internacao_alta_criterio
 
 entities:
-# - n_casas
-# - n_carros
 - number
 - entity_frequencia_respiratoria
 - entity_nivel_de_consciencia
-- entity_pressao_arterial
+- entity_pressao_arterial_diastolica
+- entity_pressao_arterial_sistolica
+- entity_ureia
+- entity_idade
+- entity_tem_pneumonia
+- entity_fez_raio_x
+- entity_saturacao_de_oxigenio
+- entity_comorbidade_dpoc
+- entity_comorbidade_cirrose
+- entity_comorbidade_irc
+- entity_comorbidade_cancer
+- entity_comorbidade_diabetes
+- entity_comorbidade_ic
+- entity_comorbidade_alcoolismo
+- entity_comorbidade_asplenia
+- entity_comorbidade_imunossupressao
+- entity_uso_atb_3_meses
+- entity_local_tratamento
+- entity_curb65
+- entity_sexo
 
 actions:
 - action_extract_slot_frequencia_respiratoria
-- action_extract_slot_pressao_arterial
+- action_extract_slot_pressao_arterial_diastolica
+- action_extract_slot_pressao_arterial_sistolica
+- action_extract_slot_ureia
+- action_extract_slot_idade
+- action_extract_slot_saturacao_de_oxigenio
+- action_calculate_curb65
+- action_calculate_sepse
 
 slots:
   slot_frequencia_respiratoria:
@@ -31,45 +111,186 @@ slots:
       conditions:
       - active_loop: sepse_form
         requested_slot: slot_frequencia_respiratoria
+      - active_loop: curb65_form
+        requested_slot: slot_frequencia_respiratoria
+      - active_loop: antibiotico_form
+        requested_slot: slot_frequencia_respiratoria
   slot_nivel_de_consciencia:
-    type: text
+    type: categorical
+    values:
+      - Alerta
+      - Confuso
+      - Inconsciente
     influence_conversation: false
     mappings:
     - type: from_entity
       entity: entity_nivel_de_consciencia
-    - type: from_entity
-      entity: number
-      conditions:
-      - active_loop: sepse_form
-        requested_slot: slot_nivel_de_consciencia
-  slot_pressao_arterial:
+  slot_pressao_arterial_sistolica:
     type: float
     influence_conversation: false
     mappings:
     - type: custom
-      action: action_extract_slot_pressao_arterial
+      action: action_extract_slot_pressao_arterial_sistolica
     - type: from_entity
       entity: number
       conditions:
       - active_loop: sepse_form
-        requested_slot: slot_pressao_arterial
-    # - intent: informa
-    #   type: from_text
-    #   conditions:
-    #   - active_loop: sepse_form
-    #     requested_slot: slot_frequencia_respiratoria
-  # slot_n_casa:
-  #   type: float
-  #   influence_conversation: false
-  #   mappings:
-  #   - type: from_entity
-  #     entity: n_casas
-  # slot_n_carro:
-  #   type: float
-  #   influence_conversation: false
-  #   mappings:
-  #   - type: from_entity
-  #     entity: n_carros
+        requested_slot: slot_pressao_arterial_sistolica
+      - active_loop: curb65_form
+        requested_slot: slot_pressao_arterial_sistolica
+      - active_loop: antibiotico_form
+        requested_slot: slot_pressao_arterial_sistolica
+  slot_pressao_arterial_diastolica:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+      action: action_extract_slot_pressao_arterial_diastolica
+    - type: from_entity
+      entity: number
+      conditions:
+      - active_loop: antibiotico_form
+        requested_slot: slot_pressao_arterial_diastolica
+      - active_loop: curb65_form
+        requested_slot: slot_pressao_arterial_diastolica
+      - active_loop: antibiotico_form
+        requested_slot: slot_pressao_arterial_diastolica
+  slot_ureia:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+      action: action_extract_slot_ureia
+    - type: from_entity
+      entity: number
+      conditions:
+      - active_loop: curb65_form
+        requested_slot: slot_ureia
+      - active_loop: antibiotico_form
+        requested_slot: slot_ureia
+  slot_saturacao_de_oxigenio:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+      action: action_extract_slot_saturacao_de_oxigenio
+  slot_idade:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+      action: action_extract_slot_idade
+    - type: from_entity
+      entity: number
+      conditions:
+      - active_loop: curb65_form
+        requested_slot: slot_idade
+      - active_loop: antibiotico_form
+        requested_slot: slot_idade
+  slot_tem_pneumonia:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_tem_pneumonia
+  slot_fez_raio_x:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_fez_raio_x
+  slot_comorbidade_dpoc:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_comorbidade_dpoc
+    - type: from_intent
+      value: true
+      intent: afirma
+      conditions:
+      - active_loop: antibiotico_form
+        requested_slot: slot_comorbidade_dpoc
+    - type: from_intent
+      value: false
+      intent: nega
+      conditions:
+      - active_loop: antibiotico_form
+        requested_slot: slot_comorbidade_dpoc
+  slot_comorbidade_cirrose:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_comorbidade_cirrose
+  slot_comorbidade_irc:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_comorbidade_irc
+  slot_comorbidade_cancer:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_comorbidade_cancer
+  slot_comorbidade_diabetes:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_comorbidade_diabetes
+  slot_comorbidade_ic:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_comorbidade_ic
+  slot_comorbidade_alcoolismo:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_comorbidade_alcoolismo
+  slot_comorbidade_asplenia:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_comorbidade_asplenia
+  slot_comorbidade_imunossupressao:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_comorbidade_imunossupressao
+  slot_uso_atb_3_meses:
+    type: bool
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_uso_atb_3_meses
+  slot_local_tratamento:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_local_tratamento
+  slot_curb65:
+    type: float
+    influence_conversation: false
+    mappings:
+    - type: custom
+  slot_sexo:
+    type: categorical
+    values:
+      - M
+      - F
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: entity_sexo
 
 forms:
   sepse_form:
@@ -77,7 +298,38 @@ forms:
     required_slots:
       - slot_frequencia_respiratoria
       - slot_nivel_de_consciencia
-      - slot_pressao_arterial
+      - slot_pressao_arterial_sistolica
+  
+  curb65_form:
+    ignored_intents: []
+    required_slots:
+      - slot_nivel_de_consciencia
+      - slot_ureia
+      - slot_frequencia_respiratoria
+      - slot_pressao_arterial_sistolica
+      - slot_pressao_arterial_diastolica
+      - slot_idade
+  
+  antibiotico_form:
+    ignored_intents: []
+    required_slots:
+      - slot_nivel_de_consciencia
+      - slot_ureia
+      - slot_frequencia_respiratoria
+      - slot_pressao_arterial_sistolica
+      - slot_pressao_arterial_diastolica
+      - slot_idade
+      - slot_comorbidade_dpoc
+      - slot_comorbidade_cirrose
+      - slot_comorbidade_irc
+      - slot_comorbidade_cancer
+      - slot_comorbidade_diabetes
+      - slot_comorbidade_ic
+      - slot_comorbidade_alcoolismo
+      - slot_comorbidade_asplenia
+      - slot_comorbidade_imunossupressao
+      - slot_uso_atb_3_meses
+      - slot_local_tratamento
 
 responses:
   utter_diagnostico_pneumonia:
@@ -88,16 +340,148 @@ responses:
   - text: "Qual é o nível de consciência?"
     buttons:
     - title: "Alerta"
-      payload: "Alerta"
+      payload: '/informa{{"entity_nivel_de_consciencia": "Alerta"}}'
     - title: "Confusão mental"
-      payload: "Confusão mental"
-  utter_ask_slot_pressao_arterial:
-  - text: "Qual é a pressão arterial?"
+      payload: '/informa{{"entity_nivel_de_consciencia": "Confusão mental"}}'
+  utter_ask_slot_pressao_arterial_sistolica:
+  - text: "Qual é a pressão arterial sistólica?"
+  utter_ask_slot_pressao_arterial_diastolica:
+  - text: "Qual é a pressão arterial diastólica?"
+  utter_ask_slot_ureia:
+  - text: "Qual é o nível de uréia?"
+  utter_ask_slot_saturacao_de_oxigenio:
+  - text: "Qual é a saturação de oxigênio?"
+  utter_ask_slot_idade:
+  - text: "Qual é a idade do paciente?"
+  utter_ask_fez_raio_x:
+  - text: "Realizou raio x"
+    buttons:
+    - title: "Sim"
+      payload: '/informa{{"entity_fez_raio_x": true}}'
+    - title: "Não"
+      payload: '/informa{{"entity_fez_raio_x": false}}'
+  utter_ask_slot_comorbidade_dpoc:
+  - text: "O paciente possui doença pulmonar obstrutiva crônica (DPOC)?"
+    buttons:
+    - title: "Sim"
+      payload: '/informa{{"entity_comorbidade_dpoc": true}}'
+    - title: "Não"
+      payload: '/informa{{"entity_comorbidade_dpoc": false}}'
+  utter_ask_slot_comorbidade_cirrose:
+  - text: "O paciente possui cirrose?"
+    buttons:
+    - title: "Sim"
+      payload: '/informa{{"entity_comorbidade_cirrose": true}}'
+    - title: "Não"
+      payload: '/informa{{"entity_comorbidade_cirrose": false}}'
+  utter_ask_slot_comorbidade_irc:
+  - text: "O paciente possui insuficiência renal crônica?"
+    buttons:
+    - title: "Sim"
+      payload: '/informa{{"entity_comorbidade_irc": true}}'
+    - title: "Não"
+      payload: '/informa{{"entity_comorbidade_irc": false}}'
+  utter_ask_slot_comorbidade_cancer:
+  - text: "O paciente possui câncer?"
+    buttons:
+    - title: "Sim"
+      payload: '/informa{{"entity_comorbidade_cancer": true}}'
+    - title: "Não"
+      payload: '/informa{{"entity_comorbidade_cancer": false}}'
+  utter_ask_slot_comorbidade_diabetes:
+  - text: "O paciente possui diabetes?"
+    buttons:
+    - title: "Sim"
+      payload: '/informa{{"entity_comorbidade_diabetes": true}}'
+    - title: "Não"
+      payload: '/informa{{"entity_comorbidade_diabetes": false}}'
+  utter_ask_slot_comorbidade_ic:
+  - text: "O paciente possui insuficiência cardíaca?"
+    buttons:
+    - title: "Sim"
+      payload: '/informa{{"entity_comorbidade_ic": true}}'
+    - title: "Não"
+      payload: '/informa{{"entity_comorbidade_ic": false}}'
+  utter_ask_slot_comorbidade_alcoolismo:
+  - text: "O paciente possui alcoolismo?"
+    buttons:
+    - title: "Sim"
+      payload: '/informa{{"entity_comorbidade_alcoolismo": true}}'
+    - title: "Não"
+      payload: '/informa{{"entity_comorbidade_alcoolismo": false}}'
+  utter_ask_slot_comorbidade_asplenia:
+  - text: "O paciente possui asplenia?"
+    buttons:
+    - title: "Sim"
+      payload: '/informa{{"entity_comorbidade_asplenia": true}}'
+    - title: "Não"
+      payload: '/informa{{"entity_comorbidade_asplenia": false}}'
+  utter_ask_slot_comorbidade_imunossupressao:
+  - text: "O paciente possui imunossupressão?"
+    buttons:
+    - title: "Sim"
+      payload: '/informa{{"entity_comorbidade_imunossupressao": true}}'
+    - title: "Não"
+      payload: '/informa{{"entity_comorbidade_imunossupressao": false}}'
+  utter_ask_slot_uso_atb_3_meses:
+  - text: "O paciente fez uso de antibiotíco a menos de 3 meses?"
+    buttons:
+    - title: "Sim"
+      payload: '/informa{{"entity_uso_atb_3_meses": true}}'
+    - title: "Não"
+      payload: '/informa{{"entity_uso_atb_3_meses": false}}'
+  utter_ask_slot_local_tratamento:
+  - text: "Qual o local de tratamento?"
+    buttons:
+    - title: "Domicílio"
+      payload: '/informa{{"entity_local_tratamento": "Domicílio"}}'
+    - title: "CMC"
+      payload: '/informa{{"entity_local_tratamento": "CMC"}}'
+    - title: "UTI"
+      payload: '/informa{{"entity_local_tratamento": "UTI"}}'
   utter_completa_sepse_form:
-  - text: "tem sepse, freq ({slot_frequencia_respiratoria})"
-  utter_isso_e_numero:
-  - text: "número: ({slot_numero})"
+  - text: "dados para cálculo de sepse: 
+    freq resp ({slot_frequencia_respiratoria}), 
+    nc ({slot_nivel_de_consciencia}), 
+    pas ({slot_pressao_arterial_sistolica})"
+  utter_completa_curb65_form:
+  - text: "dados para curb65: 
+    freq resp ({slot_frequencia_respiratoria}), 
+    nc ({slot_nivel_de_consciencia}), 
+    pas ({slot_pressao_arterial_sistolica}), 
+    pad ({slot_pressao_arterial_diastolica}), 
+    ureia ({slot_ureia}), 
+    idade ({slot_idade}), 
+    sat02 ({slot_saturacao_de_oxigenio})"
+  utter_completa_antibiotico_form:
+  - text: "dados para antibiótico: 
+    freq resp ({slot_frequencia_respiratoria}), 
+    nc ({slot_nivel_de_consciencia}), 
+    pas ({slot_pressao_arterial_sistolica}), 
+    pad ({slot_pressao_arterial_diastolica}), 
+    ureia ({slot_ureia}), 
+    idade ({slot_idade}), 
+    dpoc ({slot_comorbidade_dpoc}), 
+    cirrose ({slot_comorbidade_cirrose}), 
+    irc ({slot_comorbidade_irc}), 
+    cancer ({slot_comorbidade_cancer}), 
+    diabetes ({slot_comorbidade_diabetes}), 
+    ic ({slot_comorbidade_ic}), 
+    alcoolismo ({slot_comorbidade_alcoolismo}), 
+    asplenia ({slot_comorbidade_asplenia}), 
+    imunossupressao ({slot_comorbidade_imunossupressao}), 
+    atb 3 meses ({slot_uso_atb_3_meses}), 
+    local de tratamento ({slot_local_tratamento})"
+  utter_menu_saudacao:
+  - text: "Olá, o que posso fazer por você hoje?"
+    buttons:
+    - title: "Quero saber se devo considerar sepse"
+      payload: '/sepse_tem'
+    - title: "Quero saber qual antibiótico devo aplicar"
+      payload: '/antibiotico_qual'
+    - title: "Quero saber o curb65 do meu paciente"
+      payload: '/curb65_qual_e'
 
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false

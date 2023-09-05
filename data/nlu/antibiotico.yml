@@ -1,0 +1,53 @@
+version: "3.1"
+
+nlu:
+- intent: antibiotico_qual
+  examples: |
+    - Qual antibiótico fazer?
+    - Qual seria a opção de antibiotico?
+    - Qual antibiótico devo fazer?
+    - Qual é a dose do antibiótico?
+    - Qual é esquema inicial de antibiotico?
+
+- intent: antibiotico_quando_suspender
+  examples: |
+    - Quando posso suspender o antibiotico?
+    - Quando suspendo o antibiotico?
+
+- intent: antibiotico_quando_aplicar_via_oral
+  examples: |
+    - Tem opção via oral?
+
+- intent: antibiotico_qual_monoterapia_ou_combinada
+  examples: |
+    - Faço monoterapia ou terapia combinada?
+    - É melhor fazer terapia combinada ou monoterapia?
+
+- intent: antibiotico_quando_cobrir_virus
+  examples: |
+    - Preciso cobrir vírus?
+
+- intent: antibiotico_quando_cobrir_anaerobio
+  examples: |
+    - Precisa cobrir anaeróbio?
+
+- intent: antibiotico_quando_cobrir_germes_atipicos
+  examples: |
+    - Quando cobrir germes atípicos?
+
+- intent: antibiotico_qual_tempo_de_tratamento
+  examples: |
+    - Quanto tempo de tratamento?
+
+- intent: antibiotico_quando_aplicar_dose_de_ataque
+  examples: |
+    - Tem que fazer dose de ataque?
+
+- intent: antibiotico_quando_aplicar_troca_para_oral
+  examples: |
+    - Quando posso fazer switch oral?
+    - Quando fazer troca para via oral?
+
+- intent: antibiotico_qual_para_alergia_a_penicilina
+  examples: |
+    - Antibiótico para alergia a penicilina?

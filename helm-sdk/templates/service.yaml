@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "laura-care-duvidas-generalista-actions.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "laura-care-duvidas-generalista-actions.name" . }}
+    helm.sh/chart: {{ include "laura-care-duvidas-generalista-actions.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: {{ include "laura-care-duvidas-generalista-actions.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}

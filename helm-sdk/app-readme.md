@@ -1,0 +1,1 @@
+laura-care-duvidas-generalista-actions é o módulo do ```#robolaura``` que implementa o chatbot da laura para o generalista. 

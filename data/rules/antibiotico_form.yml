@@ -1,0 +1,54 @@
+version: "3.1"
+
+rules:
+- rule: ativar form antibiotico antibiotico_qual
+  steps:
+  - intent: antibiotico_qual
+  - action: antibiotico_form
+  - active_loop: antibiotico_form
+
+- rule: ativar form antibiotico antibiotico_qual_monoterapia_ou_combinada
+  steps:
+  - intent: antibiotico_qual_monoterapia_ou_combinada
+  - action: antibiotico_form
+  - active_loop: antibiotico_form
+
+- rule: ativar form antibiotico antibiotico_quando_aplicar_via_oral
+  steps:
+  - intent: antibiotico_quando_aplicar_via_oral
+  - action: antibiotico_form
+  - active_loop: antibiotico_form
+
+- rule: ativar form antibiotico antibiotico_qual_tempo_de_tratamento
+  steps:
+  - intent: antibiotico_qual_tempo_de_tratamento
+  - action: antibiotico_form
+  - active_loop: antibiotico_form
+
+- rule: ativar form antibiotico antibiotico_quando_aplicar_dose_de_ataque
+  steps:
+  - intent: antibiotico_quando_aplicar_dose_de_ataque
+  - action: antibiotico_form
+  - active_loop: antibiotico_form
+
+- rule: ativar form antibiotico antibiotico_quando_cobrir_anaerobio
+  steps:
+  - intent: antibiotico_quando_cobrir_anaerobio
+  - action: antibiotico_form
+  - active_loop: antibiotico_form
+
+- rule: ativar form antibiotico antibiotico_quando_cobrir_germes_atipicos
+  steps:
+  - intent: antibiotico_quando_cobrir_germes_atipicos
+  - action: antibiotico_form
+  - active_loop: antibiotico_form
+
+- rule: completar form antibiotico
+  condition:
+  - active_loop: antibiotico_form
+  steps:
+  - action: antibiotico_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_completa_antibiotico_form

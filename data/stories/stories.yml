@@ -1,0 +1,7 @@
+version: "3.1"
+
+stories:
+- story: pneumonia_diagnostico
+  steps:
+  - intent: pneumonia_diagnostico
+  - action: utter_diagnostico_pneumonia

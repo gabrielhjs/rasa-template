@@ -1,13 +1,13 @@
 version: "3.1"
 
 rules:
-- rule: ativar form possui sepse
+- rule: ativar form sepse
   steps:
-  - intent: paciente_possui_sepse
+  - intent: sepse_tem
   - action: sepse_form
   - active_loop: sepse_form
 
-- rule: completar form possui sepse
+- rule: completar form sepse
   condition:
   - active_loop: sepse_form
   steps:
@@ -15,4 +15,4 @@ rules:
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  - action: utter_completa_sepse_form
+  - action: action_calculate_sepse

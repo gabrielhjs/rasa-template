@@ -18,6 +18,11 @@ pipeline:
   url: http://duckling:8000
   dimensions:
   - number
+- name: RegexEntityExtractor
+  case_sensitive: false
+  use_lookup_tables: true
+  use_regexes: false
+  use_word_boundaries: false
 - name: EntitySynonymMapper
 - name: DIETClassifier
   epochs: 300

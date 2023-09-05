@@ -1,0 +1,123 @@
+version: "3.1"
+
+nlu:
+- intent: exame_qual_solicitar
+  examples: |
+    - Quais exames eu devo pedir?
+
+- intent: exame_de_imagem_qual
+  examples: |
+    - Qual exame de imagem é melhor nesse caso?
+
+- intent: exame_inicial_quais
+  examples: |
+    - Quais são os exames laboratoriais iniciais indicados?
+    - Quais são os exames iniciais recomendados?
+    - Indique os exames laboratoriais iniciais.
+    - Quais exames iniciais são apropriados?
+    - Pneumonia: exames laboratoriais iniciais?
+    - Exames iniciais em suspeita de pneumonia?
+    - Quais análises iniciais são necessárias?
+    - Indicação de exames iniciais na pneumonia.
+    - Inicialmente, que testes devemos solicitar?
+    - Exames laboratoriais iniciais na avaliação.
+    - Pneumonia: quais análises no começo?
+    - Que exames solicitar no início do diagnóstico?
+    - Indicativos laboratoriais iniciais na pneumonia.
+    - Exames iniciais em pacientes com suspeita.
+    - Quais análises devem ser realizadas inicialmente?
+    - Pneumonia: quais exames na primeira fase?
+    - Exames laboratoriais no início da investigação.
+    - Inicialmente, quais testes pedir na suspeita?
+    - Protocolo de exames iniciais na pneumonia.
+    - Quais exames no início da avaliação clínica?
+    - Exames iniciais recomendados em pneumonia.
+    - Quais análises solicitar logo de início?
+    - Exames laboratoriais na fase inicial da suspeita.
+    - Diagnóstico inicial: que exames indicar?
+    - Pneumonia: quais testes na fase inicial?
+    - Exames iniciais para estabelecer o diagnóstico.
+    - Quais análises realizar inicialmente na pneumonia?
+    - Exames no início da avaliação diagnóstica.
+    - Pneumonia: que exames pedir logo no começo?
+    - Quais exames laboratoriais iniciais são cruciais?
+    - Protocolo de análises iniciais na suspeita.
+    - Exames no início da investigação de pneumonia.
+    - Quais análises solicitar nas fases iniciais?
+    - Diagnóstico precoce: que exames são primordiais?
+    - Pneumonia: quais testes no início do processo?
+    - Exames laboratoriais recomendados no começo.
+    - Inicialmente, que análises são fundamentais?
+    - Exames iniciais na fase de suspeita de pneumonia.
+    - Protocolo de exames laboratoriais iniciais.
+    - Quais testes no início da avaliação clínica?
+    - Pneumonia: quais exames na fase inicial?
+    - Exames no início da busca pelo diagnóstico.
+    - Diagnóstico inicial: que análises indicar?
+    - Quais exames laboratoriais pedir desde o começo?
+    - Exames na fase inicial da investigação de pneumonia.
+    - Pneumonia: que testes solicitar logo no início?
+    - Quais análises iniciais são essenciais?
+    - Protocolo de exames no início da suspeita.
+    - Exames no início da avaliação diagnóstica de pneumonia.
+    - Quais análises realizar desde o início?
+    - Exames laboratoriais iniciais na suspeita de pneumonia.
+
+- intent: exame_repetir
+  examples: |
+    - Preciso repetir os exames?
+
+- intent: exame_pre_tratamento_quais
+  examples: |
+    - Exames laboratoriais pré-tratamento antimicrobiano?
+
+- intent: exame_raio_x_repetir_quando
+  examples: |
+    - Preciso repetir o raiox para ver se está melhorando?
+
+- intent: exame_radiografia_quando_coletar
+  examples: |
+    - Quando devo fazer radiografia de controle?
+
+- intent: exame_procalcitonina_quando
+  examples: |
+    - Devo pedir procalcitonina?
+
+- intent: exame_procalcitonina_quando_repetir
+  examples: |
+    - Quando devo repetir a procalcitonina?
+
+- intent: exame_tomografia_quando
+  examples: |
+    - Quando devo fazer tomografia?
+    - Tem que fazer tomografia para todos os pacientes?
+    - Em que situações é indicada a tomografia para diagnosticar pneumonia?
+    - Em quais circunstâncias a tomografia se torna necessária no diagnóstico de pneumonia?
+    - Quando a realização de uma tomografia é apropriada para pneumonia?
+    - Sob quais condições é aconselhável solicitar uma tomografia para pneumonia?
+    - Quais são os critérios para optar por uma tomografia ao investigar pneumonia?
+    - Em que momentos devo considerar a tomografia como parte do diagnóstico de pneumonia?
+    - Quando a tomografia é recomendada como complemento no diagnóstico de pneumonia?
+    - Em quais situações devo solicitar uma tomografia torácica para suspeita de pneumonia?
+    - Quais são os indicadores que sugerem a realização de uma tomografia no caso de pneumonia?
+    - Sob que circunstâncias é apropriado pedir uma tomografia para avaliar pneumonia?
+    - Quando é apropriado indicar uma tomografia no contexto do diagnóstico de pneumonia?
+    - Quais fatores me levariam a solicitar uma tomografia em casos de suspeita de pneumonia?
+    - Em que casos de pneumonia a tomografia se torna uma opção viável?
+    - Quando devo considerar incluir a tomografia no protocolo de diagnóstico de pneumonia?
+    - Quais são os critérios para incluir a tomografia no processo de diagnóstico de pneumonia?
+    - Em que circunstâncias a tomografia pode ser apropriada ao investigar pneumonia?
+    - Quando é apropriado recorrer à tomografia no diagnóstico de pneumonia?
+    - Em quais situações clínicas devo pensar em pedir uma tomografia para pneumonia?
+    - Sob quais condições a tomografia é recomendada como parte da avaliação de pneumonia?
+    - Quais são os cenários em que a tomografia é uma ferramenta útil para diagnosticar pneumonia?
+    - Quando a tomografia se torna relevante no contexto da suspeita de pneumonia?
+    - Em que situações a tomografia pode fornecer informações valiosas para o diagnóstico de pneumonia?
+    - Quando é apropriado considerar a tomografia como parte da abordagem diagnóstica para pneumonia?
+    - Sob quais condições devo pensar em realizar uma tomografia no caso de pneumonia?
+    - Quais são os critérios para incluir a tomografia no protocolo de investigação de pneumonia?
+    - Quando é apropriado solicitar uma tomografia torácica para avaliar pneumonia?
+    - Quais fatores clínicos podem justificar a realização de uma tomografia em casos de pneumonia?
+    - Em que circunstâncias a tomografia se torna uma opção viável no diagnóstico de pneumonia?
+    - Quando devo considerar a tomografia como um complemento ao diagnóstico de pneumonia?
+    - Quais são os indicadores que sugerem a inclusão da tomografia no diagnóstico de pneumonia?
